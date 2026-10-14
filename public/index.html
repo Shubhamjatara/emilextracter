@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Extract contacts from pasted HTML and append them to your local coldEmailing file.">
+  <title>Cold Emailing Contact Extractor</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><a class="brand" href="/">↗ <span>Contact Extractor</span></a><span class="local"><span>●</span> Runs locally</span></header>
+    <section class="intro"><p class="eyebrow">HTML → CONTACTS → SAVED</p><h1>Your contacts.<br>One growing file.</h1><p>Paste your HTML to extract names, emails, and companies.<br>Each extraction saves new contacts to coldEmailing automatically.</p></section>
+    <section class="panel" aria-labelledby="input-heading">
+      <div class="section-top"><div><span class="step">01</span><h2 id="input-heading">Add your HTML</h2></div><label class="file-button" for="file">Choose HTML / TXT file</label><input id="file" type="file" accept=".html,.htm,.txt,text/html,text/plain"></div>
+      <label class="sr-only" for="html">HTML to extract</label>
+      <textarea id="html" spellcheck="false" placeholder="Paste your HTML here…&#10;&#10;&lt;div role=&quot;row&quot;&gt;…&lt;/div&gt;"></textarea>
+      <div class="input-meta"><span id="input-info">Supports Apollo contact rows and standard HTML tables.</span><span>Up to 10 MB</span></div>
+      <div class="actions"><button id="extract" class="primary">Extract &amp; append <span>→</span></button><button id="clear" class="secondary">Clear input</button><span class="privacy">Saved locally to exports/coldEmailing.</span></div>
+    </section>
+    <p id="status" role="status" aria-live="polite">Ready when you are.</p>
+    <section class="panel results" aria-labelledby="results-heading">
+      <div class="section-top"><div><span class="step">02</span><h2 id="results-heading">All saved contacts</h2><span id="count" class="count">0 contacts</span></div></div>
+      <div id="warnings" class="warnings" hidden></div>
+      <div id="empty" class="empty"><div class="empty-icon">≡</div><h3>A little structure goes a long way.</h3><p>Your extracted contacts will appear here with a name, email, and company.</p></div>
+      <div id="table-wrap" class="table-wrap" hidden><table><thead><tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Company name</th></tr></thead><tbody id="rows"></tbody></table></div>
+    </section>
+    <footer>Only emails included in your HTML can be extracted. Duplicate emails are removed automatically.</footer>
+  </main>
+</body>
+</html>
